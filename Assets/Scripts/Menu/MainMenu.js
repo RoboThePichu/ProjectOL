@@ -1,5 +1,5 @@
 #pragma strict
-var ip: String = "";
+var ip: String = "76.84.167.144";
 var port: String = "27015";
 var netLoadobj: GameObject;
 
