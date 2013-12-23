@@ -154,7 +154,10 @@ function OnCollisionEnter(info: Collision){
 	//}
 }
 function OnTriggerEnter(info: Collider){
-	Debug.Log("Triggerd");
+	//Debug.Log("Triggerd");
+	if(info.name.Substring(0,5) == "Arrow"){
+		Debug.Log("Arrow Triggered!");
+	}
 	//if(info.gameObject.name != firedBy){
 		//Destroy(this);
 		//info.gameObject.networkView.RPC("takeDamage", RPCMode.AllBuffered, damage); //.currentHealth -= damage;

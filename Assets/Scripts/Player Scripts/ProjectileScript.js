@@ -12,12 +12,12 @@ function Start () {
 }
 
 function Update () {
-		transform.LookAt(target.transform);
-		// The step size is equal to speed times frame time.
-		var step = speed * Time.deltaTime;
-		
-		// Move our position a step closer to the target.
-		transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+	transform.LookAt(target.transform);
+	// The step size is equal to speed times frame time.
+	var step = speed * Time.deltaTime;
+	
+	// Move our position a step closer to the target.
+	transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
 }
 
 /*function OnCollisionEnter(info: Collision){
