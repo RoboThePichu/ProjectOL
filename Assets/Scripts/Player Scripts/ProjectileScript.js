@@ -8,7 +8,6 @@ var firedBy : String;
 function Start () {
 	Debug.DrawLine(transform.position, target.transform.position, Color.red, 10, false);
 	Debug.DrawRay(transform.position, target.transform.position - transform.position, Color.green, 10, false);
-
 }
 
 function Update () {
@@ -22,12 +21,12 @@ function Update () {
 
 function OnCollisionEnter(info: Collision){
 	Debug.Log("Colided");
-	//if(info.gameObject.name != firedBy){
-		Destroy(this.gameObject);
-		info.gameObject.networkView.RPC("takeDamage", RPCMode.AllBuffered, damage); //.currentHealth -= damage;
-	//}
+	if(info.gameObject.name == target.name){
+		Network.Destroy(this.networkView.viewID); //We need this so it is properly destroyed after harming them on all clients.
+		info.gameObject.networkView.RPC("takeDamage", RPCMode.AllBuffered, damage); // /Sends the message to all clients that this player is taking damage!
+	}
 }
-function OnTriggerEnter(info: Collider){
+/*function OnTriggerEnter(info: Collider){
 	Debug.Log("Colided");
 	if(info.gameObject.name == target.name){
 		Destroy(this.gameObject);
@@ -36,4 +35,4 @@ function OnTriggerEnter(info: Collider){
 }
 function OnTriggerStay(info: Collider){
 	Debug.Log("Stayed");
-}
+}*/
