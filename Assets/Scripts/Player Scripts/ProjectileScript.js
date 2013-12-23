@@ -12,11 +12,12 @@ function Start () {
 }
 
 function Update () {
-	transform.LookAt(target.transform);
-	var dir = target.transform.position - transform.position;
-	var thing = transform.TransformDirection(dir);
-	//print(dir);print(thing);print(target.transform.position);print(transform.position);
-	transform.Translate(thing);
+		transform.LookAt(target.transform);
+		// The step size is equal to speed times frame time.
+		var step = speed * Time.deltaTime;
+		
+		// Move our position a step closer to the target.
+		transform.position = Vector3.MoveTowards(transform.position, target.position, step);
 }
 
 /*function OnCollisionEnter(info: Collision){

@@ -165,20 +165,25 @@ private var hpBarSize: int = 100;
 var hpBarImg: Texture2D;
 
 function OnGUI(){
-	//var hpBarStyle = new GUIStyle();
-	var percHP = currentHealth / maxHealth;
-	var curHPBarSize = parseInt(100*percHP);
-	//Debug.Log(curHPBarSize);
-	GUI.Box(Rect(Screen.width/2-(hpBarSize/2),Screen.height-20,hpBarSize,20), "");
-	GUI.Box(Rect(Screen.width/2-(hpBarSize/2),Screen.height-20,curHPBarSize,20), hpBarImg);
-	GUI.Label(Rect(Screen.width/2-25,Screen.height-20, 50, 20), currentHealth+"/"+maxHealth);
+	if(isMine){
+		//var hpBarStyle = new GUIStyle();
+		var percHP = currentHealth / maxHealth;
+		var curHPBarSize = parseInt(100*percHP);
+		//Debug.Log(curHPBarSize);
+		GUI.Box(Rect(Screen.width/2-(hpBarSize/2),Screen.height-20,hpBarSize,20), "");
+		GUI.Box(Rect(Screen.width/2-(hpBarSize/2),Screen.height-20,curHPBarSize,20), hpBarImg);
+		GUI.Label(Rect(Screen.width/2-25,Screen.height-20, 50, 20), currentHealth+"/"+maxHealth);
+	}
 }
 
 @RPC
 function gainHealth(hp: float){
-	if(currentHealth < maxHealth){
+	if(currentHealth + hp <= maxHealth){
 		currentHealth += hp;
-	}else if(currentHealth > maxHealth){
+	}else if(currentHealth + hp > maxHealth){
+		currentHealth += (currentHealth + hp) - maxHealth;
+	}
+	if(currentHealth > maxHealth){
 		currentHealth = maxHealth;
 	}
 }

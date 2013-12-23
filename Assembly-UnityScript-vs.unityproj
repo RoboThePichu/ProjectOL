@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{1753851C-AE59-909A-15AB-E3FFE34BC5A0}</ProjectGuid>
+	<ProjectGuid>{75576260-3B44-992A-265C-E913C8E9D9F7}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -182,7 +182,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
-      <Project>{79391AC5-8752-B4CC-F33F-BB9EB1094377}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
+      <Project>{EF5B75E5-461E-917F-85EF-2280570B61DB}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
