@@ -23,7 +23,7 @@ function Awake(){
 }
 function Start () {
 	isMine = networkView.isMine;
-	if(networkView.isMine){
+	if(isMine){
 		Debug.Log("This Object Belongs to you and you can control it");
 		
 		Debug.Log(this.GetComponent(CharacterMotor).canControl);
@@ -34,6 +34,7 @@ function Start () {
 		PCam.name = "PlayerCamera"+networkView.viewID;
 		var testThing = GameObject.Find(PCam.name);
 		testThing.GetComponent(CameraControls).PlayerCheck = this;
+		PlayerCamera = testThing;
 		//testThing.transform.parent = this.transform;
 	}
 	var viewId = networkView.viewID.ToString().Substring(12); 
