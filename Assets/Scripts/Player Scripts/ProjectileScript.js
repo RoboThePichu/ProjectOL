@@ -20,17 +20,20 @@ function Update () {
 	transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
 }
 
-/*function OnCollisionEnter(info: Collision){
+function OnCollisionEnter(info: Collision){
 	Debug.Log("Colided");
 	//if(info.gameObject.name != firedBy){
 		Destroy(this.gameObject);
 		info.gameObject.networkView.RPC("takeDamage", RPCMode.AllBuffered, damage); //.currentHealth -= damage;
 	//}
-}*/
+}
 function OnTriggerEnter(info: Collider){
 	Debug.Log("Colided");
 	if(info.gameObject.name == target.name){
 		Destroy(this.gameObject);
 		info.gameObject.networkView.RPC("takeDamage", RPCMode.AllBuffered, damage); //.currentHealth -= damage;
 	}
+}
+function OnTriggerStay(info: Collider){
+	Debug.Log("Stayed");
 }
